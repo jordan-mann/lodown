@@ -401,3 +401,72 @@ function every(collection, func) {
     return true;
 }
 module.exports.every = every;
+
+
+
+
+
+/**
+ * some: Designed to take a collection as an array or an object, and a function. The function is desigend to test if any element of the collection is truthy. If any is truthy, return true. 
+ * If there is no input function, <some> should still test the collection to determine if the collection is an array or an object and determine if any values are truthy.
+ * If any is truthy, return true.
+ * Return false only if every element in a collection is falsy.
+ * @param {Array or Object} collection 
+ * @param {Function} func 
+ * @returns false if every element in a collection is falsy, or true if a single element is truthy
+ */
+
+
+function some(collection, func) {
+    //test if collection is an array
+    if(Array.isArray(collection)) {
+        //test if function is not given
+        if (func === undefined) {
+            //loop through collection
+            for (let i = 0; i < collection.length; i++) {
+                //test if each item is truthy
+                if (collection[i]) {
+                    //if any item is truthy, return true
+                    return true;
+                }
+            }
+            //else the function is given
+        }else {
+            //loop through collection
+            for (let i = 0; i < collection.length; i++) {
+                //test if the function call on each iteration of the collection is true
+                if (func(collection[i], i, collection) === true) {
+                    //if any is true, return true
+                    return true;
+                }  
+            }
+        }
+        //else the collection is an object
+    }else {
+        //test if the function is not given
+        if (func === undefined) {
+            //loop through values of the object
+            for (var key in collection) {
+                //test if the value is truthy
+                if (collection[key]) {
+                    //if any value is truthy, return true
+                    return true;
+                }
+            }
+            //else the function was given
+        }else {
+            //loop through values of the object
+            for (var key in collection) {
+                //test if the function call on each iteration of the collection is true
+                if (func(collection[key], key, collection) === true) {
+                    //if ny is true, return true
+                    return true;
+                }
+            }
+        }
+    }
+    //return false if no values returned true
+    return false;
+   
+}
+module.exports.some = some;
