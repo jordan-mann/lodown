@@ -341,6 +341,62 @@ module.exports.partition = partition;
 
 
 
+/**
+ * map: Designed to take a collect of an array or object, and a function, that takes the current element, the index and the array. 
+ * map needs to determine whether the collection is an object or an array.
+ * The input function should be called for each item of the array, or each key/value pair of the object, and push the return of the function call into a new array
+ * @param {Array or Object} collection 
+ * @param {Function} func 
+ * @returns a new array of the return values that resulted from the function calls on each element of the input collection
+ */
+
+
+function map(collection, func) {
+    //create newArray variable and assign it to an empty array
+    let newArray = [];
+    //determine if collection is an array
+    if (Array.isArray(collection)) {
+        //if array, loop through array
+        for (let i = 0; i < collection.length; i++) {
+            //push the result of the function call on each item of the collection into the newArray
+            newArray.push(func(collection[i], i, collection)) 
+        }
+        //else collection is an object
+    }else {
+        //loop through keys value pairs
+        for (var key in collection) {
+            //push the result of the function call on each value in the collection object into newArray
+            newArray.push(func(collection[key], key, collection));
+        }
+    }
+    //return newArray
+    return newArray;
+}
+module.exports.map = map;
+
+
+
+
+
+/**
+ * pluck: Designed to iterate through the input array and return a new array of values that have the same property as the input property
+ * @param {Array} array 
+ * @param {Property} property 
+ * @returns new array of values that have the same property as the input property
+ */
+
+
+function pluck(array, property) {
+    //return the function call of map on the array
+    return array.map(function(item) {
+        //map pushes the items into an new array
+        return item[property];
+    })
+}
+module.exports.pluck = pluck;
+
+
+
 
 
 /**
@@ -470,3 +526,71 @@ function some(collection, func) {
    
 }
 module.exports.some = some;
+
+
+
+
+
+/**
+ * reduce: Designed to take an array, a function, and a seed. The input function is designed to take an accumulation, current element, index, and array.
+ * The input function should loop through the input array, and take the return of each function call to create the new accumulation value. 
+ * As the function is called for each element of the array, the new accumulation value is assigned to the result of the return value.
+ * The seed paramater is the starting point for the accumulation. If no seed is given, than the first element of the input array will act as the seed.
+ * @param {Array} array 
+ * @param {Function} func 
+ * @param {Seed} seed 
+ * @returns an acccumlation of all the values of the input array
+ */
+
+
+function reduce(array, func, seed) {
+    //create variable result
+    let acc = 0;
+    //test if seed is not passed in 
+    if (seed === undefined) {
+        //if seed is not passed in, acc eqauls first element of the input array
+        acc = array[0];
+        //loop through the array
+        for (let i = 1; i < array.length; i++) {
+            //acc equals the result of the function call on each item of the array
+            acc = func(acc, array[i], i, array) 
+        }
+        //else the seed is passed in
+    }else{
+        //acc equals seed
+        acc = seed;
+        //loop through array
+        for (let i = 0; i < array.length; i++) {
+            //acc equals the result of the function call on each item of the array
+           acc = func(acc, array[i], i, array) 
+            
+        }
+    }
+    //return acc
+    return acc;
+}
+module.exports.reduce = reduce;
+
+
+
+
+
+/**
+ * extend: Designed to take an object and an array of potentially other objects. Any other objects should be added to the first input object. If any new object has keys with different values,
+ * this should update the values of the original input object.
+ * @param {Object} myObj 
+ * @param  {Array} moreObjects 
+ * @returns an object updated with any other objects, and updated with any updated values of any other added objects.
+ */
+
+
+function extend(myObj, ...moreObjects) {
+    //loop through moreObjects array
+    for (let i = 0; i < moreObjects.length; i++) {
+        //use Object.assign to extend input object with each object at the current iteration of the moreObjects array
+        Object.assign(myObj, moreObjects[i]) 
+    }
+    //return object
+    return myObj;
+}
+module.exports.extend = extend;
