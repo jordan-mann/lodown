@@ -4,8 +4,8 @@
 
 /**
  * identity: Designed to take a value, and return the value unchanged
- * @param {Any Value} value 
- * @returns {Any Value}
+ * @param {Any Value}: function takes any value 
+ * @returns {Any Value}: function returns the input value, unchanged
  */
  function identity(value) {
     return value;
@@ -17,8 +17,8 @@ module.exports.identity = identity;
 
 /**
  * typeOf: Designed to take a value, and return the name of the value type as a string
- * @param {Value} value 
- * @returns the name of the value type as a string
+ * @param {Value}: function takes in any type of value 
+ * @returns {String}: Function returns the name of the value type as a string
  */
 
 //function typeOf takes any value as an argument
@@ -69,9 +69,9 @@ function typeOf(value) {
    * The function needs to test if the the value put in as a number is truly a number, and if so, make sure it's not negative, and not longer than the number of indexes
    * in the array.
    * The function needs to test if the value put in as an array is truly an array.
-   * @param {Array} array 
-   * @param {Number} number 
-   * @returns the first <number> values from the beginning of the array
+   * @param {Array}: function takes in an array 
+   * @param {Number}: function takes in a number 
+   * @returns {Value, Value, Value}: Function returns the first <number> values from the beginning of the array
    */
 
 //create a function that takes an array and a number
@@ -114,9 +114,9 @@ return newArray;
    * The function needs to test if the the value put in as a number is truly a number, and if so, make sure it's not negative, and not longer than the number of indexes
    * in the array.
    * The function needs to test if the value put in as an array is truly an array.
-   * @param {Array} array 
-   * @param {Number} number 
-   * @returns the last <number> values from the end of the array.
+   * @param {Array}: function takes in an array 
+   * @param {Number}: function takes in a number 
+   * @returns {Value, Value, Value}: Function returns the last <number> values from the end of the array.
    */
 
   function last(array, number) {
@@ -157,9 +157,9 @@ module.exports.last = last;
  * indexOf: Designed to take an array and a value and return the index of the array that is the first occurence of the input value.
  * If the value is not in the array, the function should retrun -1.
  * If the array has multiple instance of the value, it should only return the first time it occurs, because the return statement will end the function the moment it finds the first occurence.
- * @param {Array} array 
- * @param {Value} value 
- * @returns index of the array that is the first occurence of the input value.
+ * @param {Array}: function takes in an array 
+ * @param {Value}: function takes in a parameter of any value 
+ * @returns {Number}: function returns the index of the array that is the first occurence of the input value. It returns -1 if that index doesn't exist.
  */
 
 function indexOf(array, value) {
@@ -182,9 +182,9 @@ module.exports.indexOf = indexOf;
 /**
  * contains: Designed to take an array and a value, and return true if the array contains the value, and false otherwise.
  * This function should use a ternary operator
- * @param {Array} array 
- * @param {Value} value 
- * @returns true if the array contains the input value, and false if it does not
+ * @param {Array}: function takes in an array 
+ * @param {Value}: function takes a parameter of any value 
+ * @returns {Boolean}: Function returns true if the array contains the input value, and false if it does not
  */
 
 function contains(array, value) {
@@ -200,8 +200,8 @@ function contains(array, value) {
  * each: Designed to loop over a collection, Array or Object, and applies the 
  * action Function to each value in the collection.
  * 
- * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Function} action: The Function to be applied to each value in the 
+ * @param {Array or Object}: function takes a collection, which can be either an array or an object
+ * @param {Function}: The Function takes a callback function.
  * collection
  */
 function each(collection, action) {
@@ -224,8 +224,8 @@ module.exports.each = each;
 /**
  * unique: Designed to take an array, and return a new array of values from the input array, with all duplicates removed.
  * We can use our _.indexOf function in this function to help get our result
- * @param {Array} array 
- * @returns new array with all duplicates from the input array removed. 
+ * @param {Array}: function takes an array 
+ * @returns {Array}: Function returns new array with all duplicates from the input array removed. 
  */
 
 function unique(array) {
@@ -252,9 +252,9 @@ function unique(array) {
 /**
  * filter: Designed to take an array and a function. Filter iterates through each element of the input array and calls the input function for each element.
  * For function calls that return true, it pushes the value into a new array. Filter then returns the new array. 
- * @param {Array} array 
- * @param {Function} func 
- * @returns a new array of values for which calling the input function returned true
+ * @param {Array}: function takes an array.
+ * @param {Function}: function takes a callback function. 
+ * @returns {Array}: Function returns a new array of values for which calling the input function returned true
  */
 
 
@@ -280,9 +280,9 @@ module.exports.filter = filter;
 /**
  * reject: Designed to take an array and a function. Filter iterates through each element of the input array and calls the input function for each element.
  * For function calls that return false, it pushes the value into a new array. Filter then returns the new array. 
- * @param {Array} array 
- * @param {Function} func 
- * @returns a new array of values for which calling the input function returned false
+ * @param {Array}: function takes an array. 
+ * @param {Function}: function takes a callback function.
+ * @returns {Array}: Function returns a new array of values for which calling the input function returned false.
  */
 
 function reject(array, func) {
@@ -306,9 +306,9 @@ module.exports.reject = reject;
 
 /**
  * partitition: Designed to take an array split the truthy and falsy values of they array into separate arrays, and return an array with those two arrays as subarrays in the return array.
- * @param {Array} array 
- * @param {Function} func 
- * @returns an array containing two subarrays, one holding truthy values from the input array, and the other holding falsy values.
+ * @param {Array}: function takes an array. 
+ * @param {Function}: function takes a callback function. 
+ * @returns {Array}: Function returns an array containing two subarrays, one holding truthy values from the input array, and the other holding falsy values.
  */
 
  function partition(array, func) {
@@ -345,9 +345,9 @@ module.exports.partition = partition;
  * map: Designed to take a collect of an array or object, and a function, that takes the current element, the index and the array. 
  * map needs to determine whether the collection is an object or an array.
  * The input function should be called for each item of the array, or each key/value pair of the object, and push the return of the function call into a new array
- * @param {Array or Object} collection 
- * @param {Function} func 
- * @returns a new array of the return values that resulted from the function calls on each element of the input collection
+ * @param {Array or Object}: function takes either an array or an object.
+ * @param {Function}: function takes a callback function.
+ * @returns {Array}: Function returns a new array of the return values that resulted from the function calls on each element of the input collection.
  */
 
 
@@ -380,9 +380,9 @@ module.exports.map = map;
 
 /**
  * pluck: Designed to iterate through the input array and return a new array of values that have the same property as the input property
- * @param {Array} array 
- * @param {Property} property 
- * @returns new array of values that have the same property as the input property
+ * @param {Array}: function takes an array 
+ * @param {Property}: function takes the property of an object 
+ * @returns {Array}: Function returns a new array of values that have the same property as the input property
  */
 
 
@@ -404,9 +404,9 @@ module.exports.pluck = pluck;
  * If there is no input function, <every> should still test the collection to determine if the collection is an array or an object and determine if the values are flasy.
  * If any is falsy, return false.
  * Return true only if every element in a collection is truthy.
- * @param {Array or Object} collection 
- * @param {Function} func 
- * @returns true if every element in a collection is truthy, or false if a single element is falsy
+ * @param {Array or Object}: function takes a collection in the form of either an array or an object.
+ * @param {Function}: function takes a callback function.
+ * @returns {Boolean}: Function returns true if every element in a collection is truthy, or false if a single element is falsy.
  */
 
 function every(collection, func) {
@@ -467,9 +467,9 @@ module.exports.every = every;
  * If there is no input function, <some> should still test the collection to determine if the collection is an array or an object and determine if any values are truthy.
  * If any is truthy, return true.
  * Return false only if every element in a collection is falsy.
- * @param {Array or Object} collection 
- * @param {Function} func 
- * @returns false if every element in a collection is falsy, or true if a single element is truthy
+ * @param {Array or Object}: function takes a collection in the form of either an array or an object.
+ * @param {Function}: function takes a callback function.
+ * @returns {Boolean}: Function returns false if every element in a collection is falsy, or true if a single element is truthy
  */
 
 
@@ -535,11 +535,12 @@ module.exports.some = some;
  * reduce: Designed to take an array, a function, and a seed. The input function is designed to take an accumulation, current element, index, and array.
  * The input function should loop through the input array, and take the return of each function call to create the new accumulation value. 
  * As the function is called for each element of the array, the new accumulation value is assigned to the result of the return value.
- * The seed paramater is the starting point for the accumulation. If no seed is given, than the first element of the input array will act as the seed.
- * @param {Array} array 
- * @param {Function} func 
- * @param {Seed} seed 
- * @returns an acccumlation of all the values of the input array
+ * The seed paramater is the starting point for the accumulation. The seed can be any datatype and it initializes the return value of the function.
+ * If no seed is given, than the first element of the input array will act as the seed.
+ * @param {Array}: function takes an array. 
+ * @param {Function}: function takes a callback function.
+ * @param {Seed}: function takes a seed, which can be a value of any data type. 
+ * @returns {Number}: Function returns an accumlation of all the values of the input array
  */
 
 
@@ -578,9 +579,9 @@ module.exports.reduce = reduce;
 /**
  * extend: Designed to take an object and an array of potentially other objects. Any other objects should be added to the first input object. If any new object has keys with different values,
  * this should update the values of the original input object.
- * @param {Object} myObj 
- * @param  {Array} moreObjects 
- * @returns an object updated with any other objects, and updated with any updated values of any other added objects.
+ * @param {Object}: function takes an object. 
+ * @param  {Array}: function takes an array.
+ * @returns {Object}: Function returns an object updated with any other objects, and updated with any updated values of any other added objects.
  */
 
 
